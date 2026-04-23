@@ -117,26 +117,13 @@ USE_I18N = True
 USE_TZ = True
 
 
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/6.0/howto/static-files/
+STATIC_URL = "/static/"
 
-# STATIC_URL: La URL que usa el navegador para acceder a los archivos estáticos
-# Ejemplo: /static/ hace que los archivos estén en http://localhost:8000/static/
-# El / al inicio es obligatorio (ruta absoluta desde el dominio)
-STATIC_URL = '/static/'
-
-# STATIC_ROOT: Carpeta ABSOLUTA donde Django guarda archivos estáticos en PRODUCCIÓN
-# Se usa con "python manage.py collectstatic" para recopilar todos los archivos
-# En desarrollo no es obligatorio, pero Django lo pide para evitar advertencias
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-
-# STATICFILES_DIRS: Lista de carpetas adicionales donde Django busca archivos estáticos
-# SIN esto, Django solo buscaría dentro de cada app (core/static, clients/static, etc.)
-# Lo agregamos porque nuestros archivos CSS/JS/imágenes están en core/static/
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'core', 'static'),  # Carpeta principal de estáticos
+    BASE_DIR / "core" / "static"
 ]
 
-# MEDIA_URL y MEDIA_ROOT: Para archivos subidos por usuarios (fotos de clientes, etc.)
-MEDIA_URL = '/media/'  # URL para acceder a archivos subidos
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')  # Carpeta donde se guardan los archivos subidos
+STATIC_ROOT = BASE_DIR / "staticfiles"
+
+MEDIA_URL = "/media/"
+MEDIA_ROOT = BASE_DIR / "media"
