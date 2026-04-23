@@ -1,0 +1,25 @@
+.benefits .card-benefit{
+    background:#fff;
+    padding:35px 25px;
+    border-radius:18px;
+    text-align:center;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+}
+
+.benefits .benefit-icon{
+    font-size:3.5rem;
+    color:#1e8fff;
+    display:block;
+    margin-bottom:15px;
+}
+
+.benefits h3{
+    font-size:1.3rem;
+    color:#222;
+    margin-bottom:12px;
+}
+
+.benefits p{
+    color:#666;
+    line-height:1.6;
+}
