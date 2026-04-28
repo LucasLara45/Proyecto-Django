@@ -18,7 +18,6 @@ from django.contrib import admin
 from django.urls import path,include
 from django.conf.urls.static import static
 from . import settings
-import os
 
 
 urlpatterns = [
@@ -34,15 +33,10 @@ if settings.DEBUG:
     # En PRODUCCIÓN: Un servidor web (Nginx, Apache) maneja los archivos estáticos
     # Esta sección SOLO se ejecuta cuando DEBUG=True, así se ve durante el desarrollo
     
+    # ARCHIVOS ESTÁTICOS (CSS, JS, imágenes del proyecto)
+    # Sincronizamos directamente con settings.py para evitar desajustes
+    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATICFILES_DIRS[0])
     
-    # Ruta completa a la carpeta donde están nuestros archivos estáticos
-    static_root = os.path.join(settings.BASE_DIR, 'core', 'static')
-    
-    # Le decimos a Django: "Cuando pidan /static/..., busca en core/static/"
-    # La función static() convierte rutas URL a rutas del servidor automáticamente
-    # Ejemplo: /static/core/images/banner.jpg → busca en core/static/core/images/banner.jpg
-    urlpatterns += static(settings.STATIC_URL, document_root=static_root)
-    
-    # Lo mismo para MEDIA (fotos subidas por usuarios)
+    # ARCHIVOS DE MEDIA (fotos subidas por usuarios)
     # Cuando pidan /media/..., busca en la carpeta media/
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

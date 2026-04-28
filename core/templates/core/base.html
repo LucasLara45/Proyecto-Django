@@ -1,0 +1,97 @@
+{% load static %}
+<!DOCTYPE HTML>
+<html>
+	<head>
+	<title>{% block title %}Refrigeración{% endblock %}</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>❄️</text></svg>">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="{% static 'core/assets/css/main.css' %}" />
+    <link rel="stylesheet" href="{% static 'core/assets/css/custom.css' %}" />
+    <noscript>
+    <link rel="stylesheet" href="{% static 'core/assets/css/noscript.css' %}" />
+    </noscript>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+	</head>
+
+	<body class="index is-preload">
+		<div id="page-wrapper">		
+			<!-- Header -->
+				<header id="header" class="alt">
+					<h1 id="logo"><a href="{% url "index" %}">Fresh Side</a></h1>
+					<nav id="nav">
+						<ul>
+							<li class="submenu">
+								<a href="#">Servicios</a>
+								<ul>
+									<li class="submenu">
+										<a href="#">Heladeras</a>
+										<ul>
+											<li><a href="#">Reparación</a></li>
+											<li><a href="#">Mantenimiento</a></li>
+										</ul>
+									</li>
+									<li class="submenu">
+										<a href="#">Aires acondicionados</a>
+										<ul>
+											<li><a href="#">Instalación</a></li>
+											<li><a href="#">Reparación</a></li>
+											<li><a href="#">Mantenimiento</a></li>
+										</ul>
+									</li>
+									<li><a href="{% url "contact" %}">Contacto</a></li>
+								</ul>
+							</li>
+							<li><a href="#" class="button primary">INGRESÁ</a></li>
+						</ul>
+					</nav>
+				</header>
+					
+				{% block content %}
+				{% endblock content %}
+				
+				<!-- CTA -->
+				<section id="cta">
+					
+					<header>	
+						<h2><strong>Agendemos un encuentro</strong></h2><br>
+						<p>Programa una cita con nosotros para discutir tus necesidades</p>
+					</header>
+					<footer>
+						<ul class="buttons">
+							<li><a href="#" class="button primary">Consultar</a></li>
+						</ul>
+					</footer>
+					
+				</section>
+				
+				<!-- Footer -->
+				<footer id="footer">
+					
+					<ul class="icons">
+						<li><a href="#" class="icon brands circle fa-facebook-f"><span class="label">Facebook</span></a></li>
+						<li><a href="#" class="icon brands circle fa-whatsapp"><span class="label">WhatsApp</span></a></li>
+						<li><a href="#" class="icon brands circle fa-instagram"><span class="label">Instagram</span></a></li>
+					</ul>
+					
+					<ul class="copyright">
+						<li>&copy; Untitled</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+					</ul>
+					
+				</footer>
+				
+			</div>
+	
+			
+			<!-- Scripts -->
+			<script src="{% static 'core/assets/js/jquery.min.js' %}"></script>
+			<script src="{% static 'core/assets/js/jquery.dropotron.min.js' %}"></script>
+			<script src="{% static 'core/assets/js/jquery.scrolly.min.js' %}"></script>
+			<script src="{% static 'core/assets/js/jquery.scrollex.min.js' %}"></script>
+			<script src="{% static 'core/assets/js/browser.min.js' %}"></script>
+			<script src="{% static 'core/assets/js/breakpoints.min.js' %}"></script>
+			<script src="{% static 'core/assets/js/util.js' %}"></script>
+			<script src="{% static 'core/assets/js/main.js' %}"></script>
+
+	</body>
+</html>

@@ -2521,14 +2521,7 @@ input, select, textarea {
 	#banner {
 		background-attachment: scroll, scroll, fixed;
 		background-color: #645862;
-		/* RUTAS RELATIVAS EXPLICADAS:
-		   Este archivo: core/static/core/assets/css/main.css
-		   La imagen: core/static/core/images/banner_test.jpg
-		   ../  = sube 1 nivel a: core/static/core/assets/
-		   ../../ = sube 2 niveles a: core/static/core/
-		   ../../images/ = va a: core/static/core/images/
-		   Por eso usamos ../../ (no ../) - necesitamos subir 2 niveles */
-		background-image: url("images/light-bl.svg"), url("images/light-br.svg"), url("../../images/banner_test.jpg");
+		background-image: url("images/light-bl.svg"), url("images/light-br.svg"), url("../images/banner_test.jpg");
 		background-position: bottom left, bottom right, top center;
 		background-repeat: no-repeat, no-repeat, no-repeat;
 		background-size: 25em, 25em, cover;
@@ -2625,10 +2618,8 @@ input, select, textarea {
 
 	#cta {
 		background-attachment: scroll, scroll, fixed;
-		background-color: #645862;
-		/* Misma explicación de rutas que #banner (ver arriba)
-		   ../../images/banner_test.jpg es correcta porque sube 2 niveles */
-		background-image: url("images/light-tl.svg"), url("images/light-tr.svg"), url("../../images/banner_test.jpg");
+		background-color: #000000;
+		background-image: url("images/light-tl.svg"), url("images/light-tr.svg"),url("../images/banner_test2.jpg");
 		background-position: top left, top right, bottom center;
 		background-repeat: no-repeat, no-repeat, no-repeat;
 		background-size: 25em, 25em, cover;
