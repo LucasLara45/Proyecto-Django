@@ -1,0 +1,51 @@
+{% extends "core/base.html" %}
+{% load static %}
+
+				{% block title %}
+				Iniciar sesión - Refrigeración
+				{% endblock title %}
+	
+				{% block content %}
+                <article id="main">
+					<section class="wrapper style4 special container medium">
+                        <h2 style="text-align: center; margin-top: 20px; font-size: 2em;">Login</h2>
+
+                        <div class="content">
+                                <header class="special container">
+                                    <span class="icon solid fa-user"></span>
+                                            <h2>Iniciar sesión</h2>
+                                        </header>
+                                        
+                                    <div id="error">
+                                        {% if messages %}
+                                        <ul>
+                                            {% for message in messages %}
+                                            <li style="color: red;">{{ message }}</li>
+                                            {% endfor %}
+                                        </ul>
+                                        {% endif %}
+                                    </div>
+
+                                    <form method="post" class="card" novalidate>
+
+                                        {% csrf_token %}
+
+                                        <div>
+                                            <table class="table">
+                                                {{ form.as_table }}
+                                            </table>
+                                        </div>
+                                        <div>
+                                            <button class="button primary" type="submit">INGRESAR</button>
+                                        </div>
+
+                                        </div>
+                                    </form>
+                                </div>
+                    </section>
+                </article>
+                            
+                       
+					
+			
+				{% endblock content %}

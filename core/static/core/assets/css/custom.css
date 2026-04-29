@@ -1,3 +1,8 @@
+/* Logout form inline para alinearse con otros items del nav */
+#nav form {
+    display: inline;
+}
+
 .benefits .card-benefit{
     background:#fff;
     padding:35px 25px;

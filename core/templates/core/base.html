@@ -42,7 +42,14 @@
 									<li><a href="{% url "contact" %}">Contacto</a></li>
 								</ul>
 							</li>
-							<li><a href="#" class="button primary">INGRESÁ</a></li>
+							{% if request.user.is_authenticated %}
+								<form action="{% url 'logout' %}" method="post">
+									{% csrf_token %}
+									<button type="submit" class="button primary">Cerrar sesión</button>
+								</form>
+							{% else %}
+								<a href="{% url 'login' %}" class="button primary" >Iniciar sesión</a>
+							{% endif %}
 						</ul>
 					</nav>
 				</header>

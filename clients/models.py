@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 class Client(models.Model):
     name = models.CharField(max_length=150)
@@ -22,7 +23,7 @@ class Review(models.Model):
         (5, "⭐⭐⭐⭐⭐ Excelente"),
     ]
 
-    client = models.ForeignKey(Client, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     rating = models.PositiveSmallIntegerField(
         choices=RATING,
         verbose_name="Calificación"
