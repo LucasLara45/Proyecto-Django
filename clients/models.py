@@ -16,11 +16,11 @@ class Client(models.Model):
 class Review(models.Model):
 
     RATING = [
-        (1, "⭐ Muy malo"),
-        (2, "⭐⭐ Malo"),
-        (3, "⭐⭐⭐ Bueno"),
-        (4, "⭐⭐⭐⭐ Muy bueno"),
-        (5, "⭐⭐⭐⭐⭐ Excelente"),
+        (1, "⭐"),
+        (2, "⭐⭐"),
+        (3, "⭐⭐⭐"),
+        (4, "⭐⭐⭐⭐"),
+        (5, "⭐⭐⭐⭐⭐"),
     ]
 
     user = models.ForeignKey(User, on_delete=models.CASCADE)
@@ -30,3 +30,9 @@ class Review(models.Model):
     )
     comment = models.TextField(blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        constraints = [
+            models.UniqueConstraint(fields=['user'], name='one_review_per_user')
+        ]
+        

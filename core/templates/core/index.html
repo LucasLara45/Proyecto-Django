@@ -71,7 +71,7 @@
 							</section>
 							
                             <!-- Reviews -->
-							<section class="wrapper style3 container special">
+							<section id="reviews" class="wrapper style3 container special">
 								
 								<header class="major">
 									<h2><strong>Nuestras reseñas</strong></h2>
@@ -89,17 +89,27 @@
 										{% endfor %}
 
 										<section class="reviews-form">
-											{% if user.is_authenticated %}
+											{% if user.is_authenticated and not user_has_review %}
+
 												<h3>Dejá tu reseña</h3>
+
 												<form method="POST">
 													{% csrf_token %}
 													{{ form.as_p }}
+														{% if error %}
+															<p style="color:red;">{{ error }}</p>
+														{% endif %}
 													<button type="submit">Enviar</button>
 												</form>
+
+											{% elif user.is_authenticated %}
+												<p>Ya dejaste una reseña. Gracias por tu feedback!</p>
+											
 											{% else %}
 												<p>Iniciá sesión para dejar una reseña.</p>
 												<a href="{% url 'login' %}" class="button primary">Iniciar sesión</a>
 											{% endif %}
+										
 										</section> 
 							</section>
 	{% endblock content %}

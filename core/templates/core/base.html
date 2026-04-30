@@ -53,10 +53,11 @@
 						</ul>
 					</nav>
 				</header>
-					
+				
 				{% block content %}
 				{% endblock content %}
 				
+				{% block cta %}
 				<!-- CTA -->
 				<section id="cta">
 					
@@ -71,6 +72,7 @@
 					</footer>
 					
 				</section>
+				{% endblock cta %}
 				
 				<!-- Footer -->
 				<footer id="footer">
@@ -88,6 +90,14 @@
 				</footer>
 				
 			</div>
+
+			{% comment %} <script> 
+				if (location.hash === "#reviews") {
+  					setTimeout(() => {
+    					document.getElementById("reviews")?.scrollIntoView({ behavior: "smooth" });
+  					}, 				500);
+				}
+			</script> {% endcomment %}
 	
 			
 			<!-- Scripts -->
