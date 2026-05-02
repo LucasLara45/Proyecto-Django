@@ -28,3 +28,22 @@
     color:#666;
     line-height:1.6;
 }
+
+.card {
+    text-align: left;
+    max-width: 400px;
+    margin: 0 auto;
+    background-color: whitesmoke; 
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+    padding: 15px;
+    font-family: sans-serif;
+    font-size: 20px;
+}
+
+.card-title{
+    color: #636363;
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
