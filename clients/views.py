@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.db import IntegrityError
 from .models import Review
-from .forms import ReviewForm
+from .forms import ReviewForm, ContactForm
 from django.contrib.auth.views import LoginView
 
 def index(request):
@@ -48,3 +48,10 @@ class MyLoginView(LoginView):
         messages.error(self.request, "Credenciales inválidas.")
         return super().form_invalid(form)
         
+def contact(request):
+    form = ContactForm()
+    if request.method == 'POST':
+        form = ContactForm(request.POST)
+        if form.is_valid():
+            print(form.cleaned_data)
+    return render(request , 'core/contact.html', {'form': form})
