@@ -1,6 +1,4 @@
 from django.db import models
-
-from django.db import models
 from clients.models import Client
 
 class Service(models.Model):

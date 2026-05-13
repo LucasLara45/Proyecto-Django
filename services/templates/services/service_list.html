@@ -1,0 +1,34 @@
+{% extends "core/base.html" %}
+{% load static %}
+
+{% block title %}
+Servicios - Refrigeración
+{% endblock title %}
+
+{% block content %}
+
+    <h2 style="text-align: center; margin-top: 20px; font-size: 2em;">Nuestros Servicios</h2>
+    {% if request.user.is_superuser %}
+        <div style="text-align:center; margin:20px;">
+            <a href="{% url 'service_create' %}">➕</a>
+        </div>
+    {% endif %}
+    {% if not services %}
+        <p style="text-align: center; font-size: 1.2em;">No hay servicios disponibles en este momento.</p>
+    {% elif services %}
+        <div class="services-container">
+            {% for service in services %}
+                <div class="service-card">
+                    <img src="{{ service.image.url }}">
+                    <h3>{{ service.title }}</h3>
+                    <p>{{ service.description }}</p>
+                    <p>${{ service.price }}</p>
+                    <a href="#">Solicitar servicio</a>
+                </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+{% endblock content %}
+
+{% block cta %}
+{% endblock cta %}

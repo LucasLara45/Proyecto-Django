@@ -24,8 +24,8 @@
 							<li class="submenu">
 								<a href="#">Servicios</a>
 								<ul>
-									<li><a href="#">Heladeras</a></li>
-									<li><a href="#">Aires acondicionados</a></li>
+									<li><a href="{% url 'service_list_category' 'heladera' %}">Heladeras</a></li>
+									<li><a href="{% url 'service_list_category' 'aire' %}">Aires acondicionados</a></li>
 									<li><a href="{% url "contact" %}">Contacto</a></li>
 								</ul>
 							</li>
@@ -62,25 +62,27 @@
 				{% endblock cta %}
 				
 				<!-- Footer -->
-				<footer id="footer">
-					
-					<ul class="icons">
-						<li><a href="#" class="icon brands circle fa-facebook-f"><span class="label">Facebook</span></a></li>
-						<li><a href="#" class="icon brands circle fa-whatsapp"><span class="label">WhatsApp</span></a></li>
-						<li><a href="#" class="icon brands circle fa-instagram"><span class="label">Instagram</span></a></li>
-					</ul>
-					
-					<ul class="copyright">
-						<li>&copy; Untitled</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
-					</ul>
-					
-				</footer>
+				{% block footer %}
+					<footer id="footer">
+						
+						<ul class="icons">
+							<li><a href="#" class="icon brands circle fa-facebook-f"><span class="label">Facebook</span></a></li>
+							<li><a href="#" class="icon brands circle fa-whatsapp"><span class="label">WhatsApp</span></a></li>
+							<li><a href="#" class="icon brands circle fa-instagram"><span class="label">Instagram</span></a></li>
+						</ul>
+						
+						<ul class="copyright">
+							<li>&copy; Untitled</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+						</ul>
+						
+					</footer>
 				
+				{% endblock footer %}
 			</div>
-
+			
 			{% comment %} <script> 
 				if (location.hash === "#reviews") {
-  					setTimeout(() => {
+					setTimeout(() => {
     					document.getElementById("reviews")?.scrollIntoView({ behavior: "smooth" });
   					}, 				500);
 				}
