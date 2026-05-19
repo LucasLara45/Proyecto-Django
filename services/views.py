@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.urls import reverse_lazy
-from django.views.generic import ListView, CreateView
+from django.views.generic import ListView, CreateView , UpdateView , DeleteView
 from services.models import Service
 from services.forms import ServiceForm
 
@@ -21,7 +21,17 @@ class ServiceList(ListView):
 class ServiceCreate(CreateView):
     model = Service
     form_class = ServiceForm
-    template_name = 'services/service_create.html'
+    template_name = 'services/service_form.html'
+    success_url = reverse_lazy('service_list')
+
+class ServiceUpdate(UpdateView):
+    model = Service
+    form_class = ServiceForm
+    template_name = 'services/service_form.html'
+    success_url = reverse_lazy('service_list')
+
+class ServiceDelete(DeleteView):
+    model = Service
     success_url = reverse_lazy('service_list')
     
 

@@ -1,0 +1,20 @@
+{% extends "core/base.html" %}
+
+{% block title %}Confirmar eliminación - Refrigeración{% endblock title %}
+{% block navbar %}{% endblock navbar %}
+
+{% block content %}
+    <section class="wrapper style3 container special">
+        <header class="major">
+            <h2>Confirmar eliminación</h2>
+        </header>
+        <p>"¿Estás seguro de que quieres eliminar este servicio {{ service.name }}?"</p>
+        <form method="POST">
+            {% csrf_token %}
+            <button type="submit" class="custom-buttons">Sí, eliminar</button>
+        </form>
+        <a href="{% url 'service_list' %}" class="custom-buttons">No, cancelar</a>
+    </section>
+{% endblock %}
+
+{% block cta %}{% endblock cta %}

@@ -19,9 +19,10 @@
 			<!-- Header -->
 				<header id="header" class="alt">
 					<h1 id="logo"><a href="{% url "index" %}#banner">Fresh Side</a></h1>
+					{% block navbar %}
 					<nav id="nav">
 						<ul>
-							<li class="submenu">
+							<li class="submenu custom-buttons">
 								<a href="#">Servicios</a>
 								<ul>
 									<li><a href="{% url 'service_list_category' 'heladera' %}">Heladeras</a></li>
@@ -30,15 +31,17 @@
 								</ul>
 							</li>
 							{% if request.user.is_authenticated %}
-								<form action="{% url 'logout' %}" method="post">
-									{% csrf_token %}
-									<button type="submit" class="button primary">Cerrar sesión</button>
-								</form>
+							<form action="{% url 'logout' %}" method="post">
+								{% csrf_token %}
+								<button type="submit" class="custom-buttons">Cerrar sesión</button>
+							</form>
 							{% else %}
-								<a href="{% url 'login' %}" class="button primary" >Iniciar sesión</a>
+							<a href="{% url 'signup' %}" class="custom-buttons">Registrarse</a>
+							<a href="{% url 'login' %}" class="custom-buttons" >Iniciar sesión</a>
 							{% endif %}
 						</ul>
 					</nav>
+					{% endblock navbar %}
 				</header>
 				
 				{% block content %}
@@ -54,7 +57,7 @@
 					</header>
 					<footer>
 						<ul class="buttons">
-							<li><a href="#" class="button primary">Consultar</a></li>
+							<li><a href="{% url 'contact' %}" class="custom-buttons">Consultar</a></li>
 						</ul>
 					</footer>
 					

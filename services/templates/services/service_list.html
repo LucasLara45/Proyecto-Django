@@ -1,15 +1,17 @@
 {% extends "core/base.html" %}
-{% load static %}
 
 {% block title %}
 Servicios - Refrigeración
 {% endblock title %}
 
+{% block navbar %}
+{% endblock navbar %}
+
 {% block content %}
 
     <h2 style="text-align: center; margin-top: 20px; font-size: 2em;">Nuestros Servicios</h2>
     {% if request.user.is_superuser %}
-        <div style="text-align:center; margin:20px;">
+        <div class="create-button" style="text-align: center; margin-bottom: 20px;">
             <a href="{% url 'service_create' %}">➕</a>
         </div>
     {% endif %}
@@ -19,11 +21,23 @@ Servicios - Refrigeración
         <div class="services-container">
             {% for service in services %}
                 <div class="service-card">
-                    <img src="{{ service.image.url }}">
-                    <h3>{{ service.title }}</h3>
-                    <p>{{ service.description }}</p>
-                    <p>${{ service.price }}</p>
-                    <a href="#">Solicitar servicio</a>
+                    <div class="service-image">
+                        <img src="{{ service.image.url }}">
+                    </div>
+                    <div class="service-info">
+                        <h3>{{ service.title }}</h3>
+                        <p>{{ service.description }}</p>
+                        <p class="price">
+                            ${{ service.price }}
+                        </p>
+                        <a href="#" class="custom-button">Solicitar servicio</a>
+                        <div class="edit-button">
+                            {% if request.user.is_superuser %}
+                                <a href="{% url 'service_update' service.id %}"> ✏️ </a>
+                                <a href="{% url 'service_delete' service.id %}"> 🗑️ </a>
+                            {% endif %}
+                        </div>
+                    </div>
                 </div>
             {% endfor %}
         </div>

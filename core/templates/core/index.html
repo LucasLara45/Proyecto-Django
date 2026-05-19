@@ -93,7 +93,11 @@
 														<p class="text-warning">
 															⭐ {{ review.rating }}/5
 														</p>
-
+														<div class="edit-button">
+															{% if request.user.is_superuser %}
+															<a href="{% url 'review_delete' review.id %}"> 🗑️ </a>
+															{% endif %}
+														</div>
 													</div>
 
 												</div>
@@ -104,17 +108,17 @@
 									<section class="reviews-form">
 										{% if not reviews %}
 											<p>No hay reseñas todavía.</p>				
+										{% endif %}
 
 										{% if user.is_authenticated and not user_has_review %}
-											<p>Sé el primero en dejar una reseña.</p>
 
 											<form method="POST">
 												{% csrf_token %}
 												{{ form.as_p }}
 												{% if error %}
-													<p style="color:red;">{{ error }}</p>
-												{% endif %}
-												<button type="submit">Enviar</button>
+												<p style="color:red;">{{ error }}</p>
+										{% endif %}
+												<button type="submit" class="custom-buttons">Enviar</button>
 											</form>
 
 										{% elif user.is_authenticated and user_has_review %}
@@ -122,9 +126,7 @@
 
 										{% else %}
 											<p>Iniciá sesión para dejar una reseña.</p>
-											<a href="{% url 'login' %}" class="button primary">Iniciar sesión</a>
-										{% endif %}
-
+											<a href="{% url 'login' %}" class="custom-buttons">Iniciar sesión</a>
 										{% endif %}
 									</section> 
 							</section>

@@ -1,27 +1,27 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
+from django.contrib.auth.forms import UserCreationForm
+from django.urls import reverse_lazy
+from django.views.generic import CreateView, DeleteView
 from django.db import IntegrityError
 from .models import Review
 from .forms import ReviewForm, ContactForm
 from django.contrib.auth.views import LoginView
+from django.contrib.auth.mixins import UserPassesTestMixin
 
 def index(request):
-    # Verifica si el usuario ha dejado una reseña
     user_has_review = False 
-    # Si el usuario está autenticado, verifica si ha dejado una reseña
     if request.user.is_authenticated: 
         user_has_review = Review.objects.filter(user=request.user).exists() 
-    # Si el método de la solicitud es POST, intenta guardar la reseña
     if request.method == 'POST':
         if request.user.is_authenticated:
             form = ReviewForm(request.POST)
-            # Si el formulario es válido, intenta guardar la reseña. Si el usuario ya ha dejado una reseña, muestra un mensaje de error.
             if form.is_valid():
                 try:
                     review = form.save(commit=False)
                     review.user = request.user
                     review.save()
-               
+                
                 except IntegrityError:
                     return render(request, 'core/index.html', {
                         'reviews': Review.objects.all(),
@@ -30,10 +30,8 @@ def index(request):
                         'user_has_review': True
                     })
                 return redirect('index')
-    # Si el método de la solicitud no es POST, muestra todas las reseñas y el formulario para dejar una nueva reseña (si el usuario no ha dejado una reseña).
     reviews = Review.objects.all().order_by('-id')
     form = ReviewForm()
-    # Si el usuario ha dejado una reseña, no muestra el formulario para dejar una nueva reseña.
     return render(request, 'core/index.html', {
         'reviews': reviews,
         'form': form,
@@ -55,3 +53,16 @@ def contact(request):
         if form.is_valid():
             print(form.cleaned_data)
     return render(request , 'core/contact.html', {'form': form})
+
+class SignUpView(CreateView):
+    form_class = UserCreationForm
+    template_name = 'registration/signup.html'
+    success_url = reverse_lazy('login')
+
+class ReviewDelete(DeleteView):
+    model = Review
+    template_name = 'core/review_confirm_delete.html'
+    success_url = reverse_lazy('index')
+
+    def test_func(self):
+        return self.request.user.is_authenticated

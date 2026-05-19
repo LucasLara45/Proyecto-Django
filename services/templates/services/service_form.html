@@ -1,0 +1,31 @@
+{% extends "core/base.html" %}
+{% load static %}
+
+{% block title %}
+    {% if form.instance.pk %}
+        Editar Servicio - Refrigeración
+    {% else %}
+        Crear Servicio - Refrigeración
+    {% endif %}
+{% endblock title %}
+
+{% block content %}
+    <h2 style="text-align: center; margin-top: 20px; font-size: 2em;">
+        {% if form.instance.pk %}
+            Editar Servicio
+        {% else %}
+            Crear Servicio
+        {% endif %}
+    </h2>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form }}
+        <button type="submit">
+            {% if form.instance.pk %}
+                Guardar Cambios
+            {% else %}
+                Crear Servicio
+            {% endif %}
+        </button>
+    </form>
+{% endblock content %}

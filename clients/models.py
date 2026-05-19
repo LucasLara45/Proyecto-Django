@@ -35,4 +35,3 @@ class Review(models.Model):
         constraints = [
             models.UniqueConstraint(fields=['user'], name='one_review_per_user')
         ]
-        
