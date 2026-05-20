@@ -6,9 +6,9 @@ from .models import ServiceOrder
 
 @admin.register(ServiceOrder)
 class ServiceOrderAdmin(admin.ModelAdmin):
-    list_display = ("id", "client", "service_type", "status", "created_at", "photo_preview")
-    list_filter = ("service_type", "status", "created_at")
-    search_fields = ("client__name", "description")
+    list_display = ("id", "user", "service", "status", "created_at", "photo_preview")
+    list_filter = ("service", "status", "created_at")
+    search_fields = ("user__username", "description")
     ordering = ("-created_at",)
 
     def photo_preview(self, obj):

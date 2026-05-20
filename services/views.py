@@ -1,8 +1,11 @@
 from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views.generic import ListView, CreateView , UpdateView , DeleteView
-from services.models import Service
-from services.forms import ServiceForm
+from services.models import Service, ServiceOrder
+from services.forms import ServiceForm, ServiceOrderForm
+from django.shortcuts import get_object_or_404
+from django.shortcuts import redirect
+from urllib.parse import quote
 
 class ServiceList(ListView):
     model = Service
@@ -34,4 +37,34 @@ class ServiceDelete(DeleteView):
     model = Service
     success_url = reverse_lazy('service_list')
     
+class ServiceOrderCreate(CreateView):
+    model = ServiceOrder
+    form_class = ServiceOrderForm
+    template_name = 'services/order_form.html'
+    success_url = reverse_lazy('service_list')
 
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        form.instance.service_id = self.kwargs['service_id']
+
+        order = form.save()
+
+        message = f"""
+        Hola, quiero solicitar un servicio.
+        Servicio: {order.service.title}
+        Nombre: {order.full_name}
+        Teléfono: {order.phone}
+        Dirección: {order.address}
+        Método de pago: {order.payment_method}
+        Detalles:
+        {order.notes}
+        """
+        encoded_message = quote(message)
+        whatsapp_url = f"https://wa.me/(numero)?text={encoded_message}"
+        return redirect(whatsapp_url)
+        
+    
+    def get_context_data(self, **kwargs): 
+        context = super().get_context_data(**kwargs)
+        context['service'] = get_object_or_404(Service,id=self.kwargs['service_id'])
+        return context

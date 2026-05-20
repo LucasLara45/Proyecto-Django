@@ -11,18 +11,14 @@
 				<h2 style="text-align: center; margin-top: 20px; font-size: 2em;">Contacto</h2>
 
 				<article id="main">
-					<section class="wrapper style4 special container medium">
-						
-						<!-- Content -->
-						<div class="content">
-							<form method="POST">
-
+					<section class="wrapper style4 special container medium">				
+						<div class="form-container">
+							<form method="POST" class="service-form">
 								{% csrf_token %}
-
 								{{ form.as_p }}
-
+							<div class="button-container">
 								<button type="submit">Enviar</button>
-
+							</div>
 							</form>
 						</div>
 					</section>

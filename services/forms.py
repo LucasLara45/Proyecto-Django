@@ -10,21 +10,4 @@ class ServiceForm(forms.ModelForm):
 class ServiceOrderForm(forms.ModelForm):
     class Meta:
         model = ServiceOrder
-        fields = ['client', 'service_type', 'description', 'price']
-        widgets = {
-            'description': forms.Textarea(attrs={
-                'rows': 4,
-                'cols': 40,
-                'class': 'form-control'
-            }),
-            'price': forms.NumberInput(attrs={
-                'class': 'form-control',
-                'step': '0.01'
-            }),
-            'client': forms.Select(attrs={
-                'class': 'form-control'
-            }),
-            'service_type': forms.Select(attrs={
-                'class': 'form-control'
-            }),
-        }
+        fields = ['full_name','phone','address','email','payment_method','notes',]

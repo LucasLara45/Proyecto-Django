@@ -30,7 +30,7 @@ Servicios - Refrigeración
                         <p class="price">
                             ${{ service.price }}
                         </p>
-                        <a href="#" class="custom-button">Solicitar servicio</a>
+                        <a href="{% url 'service_order_create' service.id %}" class="solicitud-button">Solicitar servicio</a>
                         <div class="edit-button">
                             {% if request.user.is_superuser %}
                                 <a href="{% url 'service_update' service.id %}"> ✏️ </a>

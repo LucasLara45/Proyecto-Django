@@ -1,0 +1,22 @@
+{% extends "core/base.html" %}
+{% load static %}
+{% block navbar %}{% endblock navbar %}
+
+{% block content %}
+    <div style="text-align: center; margin-top: 20px; font-size: 2em;">
+        <h2>Solicitar servicio</h2>
+        <p>{{ service.title }}</p>
+    </div>
+    <div class="form-container">
+        <form method="POST" class="service-form">
+            {% csrf_token %}
+            {{ form }}
+            <div class="button-container">
+                <button type="submit" class="solicitud-button">Confirmar solicitud</button>
+            </div>
+        </form>
+    </div>
+
+{% endblock %}
+
+{% block cta %}{% endblock cta %}

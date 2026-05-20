@@ -17,15 +17,19 @@
             Crear Servicio
         {% endif %}
     </h2>
-    <form method="post" enctype="multipart/form-data">
-        {% csrf_token %}
-        {{ form }}
-        <button type="submit">
-            {% if form.instance.pk %}
-                Guardar Cambios
-            {% else %}
-                Crear Servicio
-            {% endif %}
-        </button>
-    </form>
+    <div class="form-container">
+        <form method="POST" enctype="multipart/form-data" class="service-form">
+            {% csrf_token %}
+            {{ form }}
+            <div class="button-container">
+                <button type="submit">
+                    {% if form.instance.pk %}
+                    Guardar Cambios
+                    {% else %}
+                    Crear Servicio
+                    {% endif %}
+                </button>
+            </div>
+        </form>
+    </div>
 {% endblock content %}

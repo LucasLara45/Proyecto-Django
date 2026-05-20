@@ -111,15 +111,18 @@
 										{% endif %}
 
 										{% if user.is_authenticated and not user_has_review %}
-
-											<form method="POST">
+										<div class="form-container">
+											<form method="POST" class="service-form">
 												{% csrf_token %}
 												{{ form.as_p }}
 												{% if error %}
 												<p style="color:red;">{{ error }}</p>
 										{% endif %}
-												<button type="submit" class="custom-buttons">Enviar</button>
+												<div class="button-container">
+													<button type="submit" class="custom-buttons">Enviar</button>
+												</div>
 											</form>
+										</div>
 
 										{% elif user.is_authenticated and user_has_review %}
 											<p>Ya dejaste una reseña. Gracias por tu feedback!</p>
