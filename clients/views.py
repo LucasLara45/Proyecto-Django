@@ -8,6 +8,7 @@ from .models import Review
 from .forms import ReviewForm, ContactForm
 from django.contrib.auth.views import LoginView
 from django.contrib.auth.mixins import UserPassesTestMixin
+from django.core.mail import send_mail
 
 def index(request):
     user_has_review = False 
@@ -66,3 +67,28 @@ class ReviewDelete(DeleteView):
 
     def test_func(self):
         return self.request.user.is_authenticated
+    
+def contact(request):
+    form = ContactForm()
+    if request.method == 'POST':
+        form = ContactForm(request.POST)
+        if form.is_valid():
+            name = form.cleaned_data['name']
+            email = form.cleaned_data['email']
+            mensaje = form.cleaned_data['mensaje']
+            
+            full_mensaje = f"""
+            Nombre: {name}
+            Email: {email}
+            Mensaje: {mensaje}
+            """
+
+            send_mail(
+                subject="Nuevo mensaje de contacto",
+                message=full_mensaje,
+                from_email=None,
+                recipient_list=['lucaslara3000@gmail.com']
+            )
+            return redirect('index')
+    return render(request , 'core/contact.html', {'form': form,})
+    

@@ -1,5 +1,4 @@
 from django.db import models
-from clients.models import Client
 from django.contrib.auth.models import User
 
 class Service(models.Model):
@@ -7,6 +6,7 @@ class Service(models.Model):
     CATEGORY_CHOICES = [
         ('aire', 'Aire acondicionado'),
         ('heladera', 'Heladera'),
+        ('reacondicionado', 'Reacondicionado'),
     ]
 
     category = models.CharField(max_length=20, choices=CATEGORY_CHOICES)

@@ -1,3 +1,5 @@
+from unicodedata import category
+
 from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views.generic import ListView, CreateView , UpdateView , DeleteView
@@ -13,13 +15,18 @@ class ServiceList(ListView):
     context_object_name = 'services'
 
     def get_queryset(self):
-
         category = self.kwargs.get('category')
 
         if category:
             return Service.objects.filter(category=category)
 
         return Service.objects.all()
+
+    def get_template_names(self):
+        category = self.kwargs.get('category')
+        if category == 'reacondicionado':
+            return ['services/reaconditioned_list.html']
+        return ['services/service_list.html']
 
 class ServiceCreate(CreateView):
     model = Service
@@ -60,7 +67,7 @@ class ServiceOrderCreate(CreateView):
         {order.notes}
         """
         encoded_message = quote(message)
-        whatsapp_url = f"https://wa.me/(numero)?text={encoded_message}"
+        whatsapp_url = f"https://wa.me/5491126400798?text={encoded_message}"
         return redirect(whatsapp_url)
         
     

@@ -1,0 +1,84 @@
+{% extends "core/base.html" %}
+
+{% block title %}
+Servicios Reacondicionados - Refrigeración
+{% endblock title %}
+{% block navbar %}
+{% endblock navbar %}
+{% block content %}
+<h2 style="text-align: center; margin-top: 20px; font-size: 2em;">Servicios Reacondicionados</h2>
+{% if request.user.is_superuser %}
+<div class="create-button">
+    <a href="{% url 'service_create' %}">➕</a>
+</div>
+{% endif %}
+
+{% if not services %}
+<p style="text-align: center; font-size: 1.2em;">No hay servicios disponibles en este momento.</p>
+{% else %}
+
+<div class="services-container">
+    <div class="reaconditioned-grid">
+        {% for service in services %}
+        <article class="reaconditioned-card">
+            {% if request.user.is_superuser %}
+            <div class="edit-actions">
+
+                <a href="{% url 'service_update' service.id %}">
+                    ✏️
+                </a>
+
+                <a href="{% url 'service_delete' service.id %}">
+                    🗑️
+                </a>
+
+            </div>
+            {% endif %}
+
+            <div class="reaconditioned-image">
+
+                <img src="{{ service.image.url }}"
+                     alt="{{ service.title }}">
+
+            </div>
+
+            <div class="reaconditioned-info">
+
+                <h3>{{ service.title }}</h3>
+
+                <p>
+                    {% if service.description|wordcount > 10 %}
+                        {{ service.description|truncatewords:10 }}
+                        <span class="read-more">ver más...</span>
+                    {% else %}
+                        {{ service.description }}
+                    {% endif %}
+                </p>
+
+                <p class="price">
+                    ${{ service.price }}
+                </p>
+
+                <a href="{% url 'service_order_create' service.id %}"
+                   class="solicitud-button">
+
+                    Solicitar
+
+                </a>
+
+            </div>
+
+        </article>
+
+        {% endfor %}
+
+    </div>
+
+</div>
+
+{% endif %}
+
+{% endblock content %}
+
+{% block cta %}
+{% endblock cta %}
