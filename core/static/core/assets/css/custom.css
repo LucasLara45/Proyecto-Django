@@ -573,3 +573,19 @@ ul.buttons li .button.primary,
     background:#333 !important;
     border-color:#333 !important;
 }
+.form-error{
+    color: #d62828;
+    margin-top: 8px;
+    font-size: 0.95rem;
+    font-weight: bold;
+}
+
+.form-error ul{
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.helptext{
+    display: none;
+}

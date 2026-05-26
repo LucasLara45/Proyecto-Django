@@ -15,15 +15,22 @@ Crear cuenta - Refrigeración
             </header>
 
             <form method="POST">
-
                 {% csrf_token %}
 
-                {{ form.as_p }}
-
+                {% for field in form %}
+                    <div class="form-group">
+                        {{ field.label_tag }}
+                        {{ field }}
+                        {% if field.errors %}
+                            <div class="form-error">
+                                {{ field.errors }}
+                            </div>
+                        {% endif %}
+                    </div>
+                {% endfor %}
                 <button type="submit" class="custom-buttons">
                     Registrarse
                 </button>
-
             </form>
 
         </section>

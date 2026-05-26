@@ -24,9 +24,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-%+bzi*g4flug)w_c=vy_^vo1gr)!g-$iw@g^v#0b0^h^+p+qd4'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["LucasLara3333.pythonanywhere.com"]
 
 
 # Application definition
@@ -138,3 +138,8 @@ EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'lucaslara3000@gmail.com'
 EMAIL_HOST_PASSWORD = 'eabzjunfkodruvri' # Esta contraseña es un "App Password" generado para este proyecto, no es la contraseña de mi cuenta de Gmail.
+
+try:
+    from .settings_dev import *
+except ModuleNotFoundError:
+    pass
