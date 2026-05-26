@@ -1,5 +1,59 @@
-#nav form {
-    display: inline;
+#nav form{
+    display:inline;
+}
+
+/* =========================
+   GLOBAL
+========================= */
+
+*{
+    box-sizing:border-box;
+}
+
+html,
+body{
+    overflow-x:hidden;
+}
+
+img{
+    max-width:100%;
+    display:block;
+}
+
+body{
+    padding-top:90px;
+}
+
+/* =========================
+   HEADER
+========================= */
+
+#header{
+    position:fixed !important;
+    top:0;
+    left:0;
+    width:100%;
+    z-index:9999;
+    background:#eceef2;
+}
+
+#header.alt{
+    background:#eceef2;
+}
+
+#logo a{
+    background:#333;
+    color:white !important;
+    padding:12px 20px;
+    border-radius:16px;
+    text-decoration:none;
+    font-weight:bold;
+}
+
+/* HOME MOBILE */
+
+.mobile-home{
+    display:none;
 }
 
 /* =========================
@@ -11,7 +65,7 @@
     padding:35px 25px;
     border-radius:18px;
     text-align:center;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    box-shadow:0 5px 15px rgba(0,0,0,0.1);
 }
 
 .benefits .benefit-icon{
@@ -34,24 +88,27 @@
    REVIEWS
 ========================= */
 
-.card {
-    text-align: left;
-    min-width: 300px;
-    max-width: 400px;
-    margin: 0 auto;
-    background-color: whitesmoke;
-    border-radius: 10px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-    padding: 15px;
-    font-family: sans-serif;
-    font-size: 20px;
+.card{
+    width:100%;
+    max-width:400px;
+    margin:0 auto;
+
+    background:whitesmoke;
+    border-radius:10px;
+
+    box-shadow:0 2px 5px rgba(0,0,0,0.2);
+
+    padding:15px;
+
+    font-family:sans-serif;
+    font-size:20px;
 }
 
 .card-title{
-    color: #636363;
-    font-size: 24px;
-    font-weight: bold;
-    margin-bottom: 10px;
+    color:#636363;
+    font-size:24px;
+    font-weight:bold;
+    margin-bottom:10px;
 }
 
 /* =========================
@@ -59,43 +116,43 @@
 ========================= */
 
 .services-container{
-    width: 90%;
-    margin: 0 auto;
+    width:min(95%, 1400px);
+    margin:0 auto;
 }
 
-/* NORMAL SERVICES */
-
 .services-grid{
-    display: flex;
-    flex-direction: column;
-    gap: 30px;
+    display:flex;
+    flex-direction:column;
+    gap:30px;
 }
 
 .service-card{
-    background: white;
-    border-radius: 18px;
-    overflow: hidden;
-    position: relative;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    background:white;
+    border-radius:18px;
+    overflow:hidden;
+    position:relative;
+
+    box-shadow:0 5px 15px rgba(0,0,0,0.1);
 }
 
 .service-image img{
-    width: 100%;
-    height: 350px;
-    object-fit: cover;
-    display: block;
+    width:100%;
+    height:350px;
+    object-fit:cover;
 }
 
 .service-info{
-    padding: 25px;
+    padding:25px;
 }
 
 .service-info h3{
-    margin-bottom: 15px;
+    margin-bottom:15px;
+    line-height:1.3;
 }
 
 .service-info p{
-    margin-bottom: 15px;
+    margin-bottom:15px;
+    line-height:1.6;
 }
 
 /* =========================
@@ -103,52 +160,85 @@
 ========================= */
 
 .reaconditioned-grid{
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 30px;
-    margin-top: 40px;
+    display:grid;
+
+    grid-template-columns:
+    repeat(auto-fit, minmax(280px, 320px));
+
+    justify-content:center;
+
+    gap:30px;
+
+    margin-top:40px;
 }
 
 .reaconditioned-card{
-    background: white;
-    border-radius: 18px;
-    overflow: hidden;
-    position: relative;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+    width:100%;
+    max-width:320px;
+
+    background:white;
+
+    border-radius:18px;
+
+    overflow:hidden;
+
+    position:relative;
+
+    display:flex;
+    flex-direction:column;
+
+    box-shadow:0 5px 15px rgba(0,0,0,0.08);
 }
 
 .reaconditioned-image{
-    width: 100%;
-    height: 260px;
-    overflow: hidden;
-    background: white;
+    width:100%;
+    height:260px;
+
+    background:white;
+
+    overflow:hidden;
 }
 
 .reaconditioned-image img{
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-    display: block;
+    width:100%;
+    height:100%;
+
+    object-fit:contain;
 }
 
 .reaconditioned-info{
-    padding: 20px;
+    padding:20px;
+
+    display:flex;
+    flex-direction:column;
+    flex:1;
 }
 
 .reaconditioned-info h3{
-    font-size: 1.4rem;
-    margin-bottom: 15px;
+    font-size:1.4rem;
+
+    margin-bottom:15px;
+
+    line-height:1.3;
+
+    overflow-wrap:break-word;
 }
 
 .reaconditioned-info p{
-    color: #555;
-    margin-bottom: 18px;
+    color:#555;
+
+    margin-bottom:18px;
+
+    line-height:1.6;
+
+    overflow-wrap:break-word;
 }
 
 .price{
-    font-size: 1.3rem;
-    font-weight: bold;
-    margin-bottom: 18px;
+    font-size:1.3rem;
+    font-weight:bold;
+
+    margin-bottom:18px;
 }
 
 /* =========================
@@ -158,29 +248,42 @@
 .solicitud-button,
 .custom-buttons,
 .button-container button{
-    display: inline-block;
-    padding: 12px 18px;
-    background: #333;
-    color: white !important;
-    font-weight: bold;
-    border-radius: 12px;
-    text-decoration: none;
-    border: none;
-    cursor: pointer;
+    display:inline-block;
+
+    padding:12px 18px;
+
+    background:#333;
+
+    color:white !important;
+
+    font-weight:bold;
+
+    border-radius:12px;
+
+    text-decoration:none;
+
+    border:none;
+
+    cursor:pointer;
+
+    transition:0.2s;
 }
 
 .solicitud-button:hover,
 .custom-buttons:hover,
 .button-container button:hover{
-    background: #000;
-    color: white !important;
+    background:#000;
+    color:white !important;
 }
 
-/* NAV BUTTONS */
+.solicitud-button{
+    margin-top:auto;
+    width:fit-content;
+}
 
 .custom-buttons{
-    width: 200px;
-    text-align: center;
+    width:200px;
+    text-align:center;
 }
 
 /* =========================
@@ -189,29 +292,32 @@
 
 .create-button{
     display:flex;
-    justify-content: center;
-    margin-bottom: 20px;
+    justify-content:center;
+
+    margin-bottom:20px;
 }
 
 .create-button a{
-    width: 55px;
-    height: 55px;
+    width:55px;
+    height:55px;
 
     display:flex;
     justify-content:center;
     align-items:center;
 
     background:#333;
+
     color:white !important;
 
     border-radius:12px;
+
     text-decoration:none;
+
     font-size:2rem;
 }
 
 .create-button a:hover{
     background:#000;
-    color:white !important;
 }
 
 /* =========================
@@ -220,6 +326,7 @@
 
 .edit-actions{
     position:absolute;
+
     top:15px;
     right:15px;
 
@@ -236,126 +343,233 @@
     align-items:center;
 
     background:#333;
+
     color:white !important;
 
     border-radius:10px;
+
     text-decoration:none;
 }
 
 .edit-actions a:hover{
     background:#000;
-    color:white !important;
 }
 
 /* =========================
    FORM
 ========================= */
 
-.form-container {
-    display: flex;
-    justify-content: center;
-    margin: 50px 20px;
+.form-container{
+    display:flex;
+    justify-content:center;
+
+    margin:50px 20px;
 }
 
-.service-form {
-    background: #ffffff;
-    padding: 30px;
-    border-radius: 15px;
-    width: 100%;
-    max-width: 600px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+.service-form{
+    background:#fff;
+
+    padding:30px;
+
+    border-radius:15px;
+
+    width:100%;
+    max-width:600px;
+
+    box-shadow:0 5px 15px rgba(0,0,0,0.1);
 }
 
-.service-form p {
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 20px;
+.service-form p{
+    display:flex;
+    flex-direction:column;
+
+    margin-bottom:20px;
 }
 
-.service-form label {
-    margin-bottom: 8px;
-    font-weight: bold;
-    color: #333;
+.service-form label{
+    margin-bottom:8px;
+
+    font-weight:bold;
+
+    color:#333;
 }
 
 .service-form input,
 .service-form textarea,
-.service-form select {
-    padding: 12px;
-    border: 1px solid #ccc;
-    border-radius: 10px;
-    font-size: 1rem;
-    width: 100%;
-    box-sizing: border-box;
+.service-form select{
+    width:100%;
+
+    padding:12px;
+
+    border:1px solid #ccc;
+
+    border-radius:10px;
+
+    font-size:1rem;
 }
 
-.service-form textarea {
-    resize: vertical;
-    min-height: 120px;
+.service-form textarea{
+    resize:vertical;
+    min-height:120px;
 }
 
 .service-form input:focus,
 .service-form textarea:focus,
-.service-form select:focus {
-    outline: none;
-    border-color: #4aa3ff;
+.service-form select:focus{
+    outline:none;
+    border-color:#4aa3ff;
 }
 
 /* =========================
    BUTTON CONTAINER
 ========================= */
 
-.button-container {
-    display: flex;
-    justify-content: center;
-    margin-top: 25px;
+.button-container{
+    display:flex;
+    justify-content:center;
+
+    margin-top:25px;
 }
 
 /* =========================
-   RESPONSIVE
+   TABLET
 ========================= */
 
-@media (max-width: 768px){
+@media screen and (max-width:980px){
+
+    .service-image img{
+        height:260px;
+    }
+
+    .custom-buttons{
+        width:170px;
+    }
+
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media screen and (max-width:736px){
+
+    body{
+        padding-top:70px;
+    }
+
+    .mobile-home{
+        display:block;
+    }
+
+    .services-container{
+        width:100%;
+        padding:0 15px;
+    }
 
     .reaconditioned-grid{
-        grid-template-columns: 1fr;
+        grid-template-columns:1fr;
+        justify-items:center;
+    }
+
+    .reaconditioned-card{
+        max-width:320px;
+    }
+
+    .service-image img,
+    .reaconditioned-image{
+        height:220px;
+    }
+
+    .service-info,
+    .reaconditioned-info{
+        padding:15px;
+    }
+
+    .service-info h3,
+    .reaconditioned-info h3{
+        font-size:1.2rem;
+        line-height:1.4;
+        word-break:break-word;
+    }
+
+    .service-info p,
+    .reaconditioned-info p{
+        font-size:0.95rem;
+        line-height:1.6;
+        word-break:break-word;
+    }
+
+    .custom-buttons{
+        width:100%;
+        max-width:250px;
     }
 
     .card{
-        min-width: 100%;
+        max-width:100%;
+    }
+
+    .service-form{
+        padding:20px;
+    }
+
+    .button-container button{
+        width:100%;
+    }
+
+    h1,
+    h2{
+        font-size:2rem !important;
+        line-height:1.3;
+        text-align:center;
+        word-break:break-word;
     }
 
 }
-/* FIX FINAL REACONDICIONADOS */
 
-.reaconditioned-grid{
-    display: grid !important;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 320px)) !important;
-    justify-content: center;
-    gap: 30px;
+.mobile-home{
+    display:none !important;
 }
 
-.reaconditioned-card{
-    width: 320px !important;
-    min-height: 520px;
+@media screen and (max-width:736px){
 
-    display: flex;
-    flex-direction: column;
+    .mobile-home{
+        display:block !important;
+    }
 
-    background: white;
-    border-radius: 18px;
-    overflow: hidden;
-
-    position: relative;
 }
 
-.reaconditioned-info{
-    display: flex;
-    flex-direction: column;
-    flex: 1;
+/* =========================
+   OVERRIDE FINAL BOTONES
+========================= */
+
+/* TODOS los botones custom */
+
+a.custom-buttons,
+.custom-buttons,
+ul.buttons li a.custom-buttons,
+#cta .custom-buttons,
+#banner .custom-buttons{
+    background:#333 !important;
+    color:white !important;
+    border:none !important;
+    box-shadow:none !important;
 }
 
-.solicitud-button{
-    margin-top: auto;
-    width: fit-content;
+/* hover */
+
+a.custom-buttons:hover,
+.custom-buttons:hover,
+ul.buttons li a.custom-buttons:hover,
+#cta .custom-buttons:hover,
+#banner .custom-buttons:hover{
+    background:#000 !important;
+    color:white !important;
+}
+
+/* elimina estilos verdes del template */
+
+ul.buttons li .button.primary,
+.button.primary{
+    background:#333 !important;
+    border-color:#333 !important;
 }

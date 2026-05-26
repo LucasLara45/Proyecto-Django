@@ -10,26 +10,30 @@
 {% endblock title %}
 
 {% block content %}
-    <h2 style="text-align: center; margin-top: 20px; font-size: 2em;">
-        {% if form.instance.pk %}
-            Editar Servicio
-        {% else %}
-            Crear Servicio
-        {% endif %}
-    </h2>
-    <div class="form-container">
-        <form method="POST" enctype="multipart/form-data" class="service-form">
-            {% csrf_token %}
-            {{ form }}
-            <div class="button-container">
-                <button type="submit">
-                    {% if form.instance.pk %}
-                    Guardar Cambios
+    <article id="main">
+        <div class="form-container">
+            <form method="POST" enctype="multipart/form-data" class="service-form">
+                <h2 style="text-align: center; margin-top: 20px; font-size: 2em;">
+                    {% if form.instance.pk and form.instance.category == "reacondicionado" %}
+                        Editar Producto
+                    {% elif form.instance.pk %}
+                        Editar Servicio
                     {% else %}
-                    Crear Servicio
+                        Crear Servicio o Producto
                     {% endif %}
-                </button>
-            </div>
-        </form>
-    </div>
+                </h2>
+                {% csrf_token %}
+                {{ form }}
+                <div class="button-container">
+                    <button type="submit">
+                        {% if form.instance.pk %}
+                        Guardar Cambios
+                        {% else %}
+                        Crear Servicio
+                        {% endif %}
+                    </button>
+                </div>
+            </form>
+        </div>
+    </article>
 {% endblock content %}

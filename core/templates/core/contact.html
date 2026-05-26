@@ -4,16 +4,14 @@
 				{% block title %}
 				Contacto - Refrigeración
 				{% endblock title %}
-				{% block navbar %}
-				{% endblock navbar %}
-	
+				
 				{% block content %}
-				<h2 style="text-align: center; margin-top: 20px; font-size: 2em;">Contacto</h2>
-
+				
 				<article id="main">
 					<section class="wrapper style4 special container medium">				
 						<div class="form-container">
 							<form method="POST" class="service-form">
+								<h2 style="text-align: center; margin-top: 20px; font-size: 2em;">Contacto</h2>
 								{% csrf_token %}
 								{{ form.as_p }}
 							<div class="button-container">

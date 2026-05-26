@@ -1,14 +1,18 @@
 {% extends "core/base.html" %}
 {% load static %}
-{% block navbar %}{% endblock navbar %}
+{% block title %}
+    Solicitar Servicio - Refrigeración
+{% endblock title %}
 
 {% block content %}
-    <div style="text-align: center; margin-top: 20px; font-size: 2em;">
+    <div style="text-align: center; margin-top: 20px; font-size: 1.5em;">
         <h2>Solicitar servicio</h2>
-        <p>{{ service.title }}</p>
     </div>
     <div class="form-container">
         <form method="POST" class="service-form">
+            <div style="text-align: center; margin-bottom: 20px; font-size: 1.2em; color: black; background-color: whitesmoke; border-radius: 5px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);">
+                <p>{{ service.title }}</p>
+            </div>
             {% csrf_token %}
             {{ form }}
             <div class="button-container">
