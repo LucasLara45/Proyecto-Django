@@ -5,7 +5,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 DEBUG = True
 ALLOWED_HOSTS = []
-STATIC_ROOT = None
+
+STATIC_ROOT = BASE_DIR / "staticfiles"
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
