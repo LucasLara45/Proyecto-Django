@@ -6,7 +6,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 DEBUG = True
 ALLOWED_HOSTS = []
 
-STATIC_ROOT = BASE_DIR / "staticfiles"
+STATIC_ROOT = None
 
 DATABASES = {
     'default': {

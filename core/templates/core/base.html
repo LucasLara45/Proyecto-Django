@@ -31,17 +31,18 @@
 									<li><a href="{% url 'service_list_category' 'heladera' %}">Heladeras</a></li>
 									<li><a href="{% url 'service_list_category' 'aire' %}">Aires acondicionados</a></li>
 									<li><a href="{% url 'service_list_category' 'reacondicionado' %}">Reacondicionados</a></li>
-									<li><a href="{% url "contact" %}">Contacto</a></li>
 								</ul>
 							</li>
 							{% if request.user.is_authenticated %}
-							<form action="{% url 'logout' %}" method="post">
+							<form id="logout-form" action="{% url 'logout' %}" method="post">
 								{% csrf_token %}
-								<button type="submit" class="custom-buttons">Cerrar sesión</button>
+								<a href="#" onclick="document.getElementById('logout-form').submit(); return false;" class="custom-buttons">
+									Cerrar sesión
+								</a>
 							</form>
 							{% else %}
 							<a href="{% url 'signup' %}" class="custom-buttons">Registrarse</a>
-							<a href="{% url 'login' %}" class="custom-buttons" >Iniciar sesión</a>
+							<a href="{% url 'login' %}" class="custom-buttons">Iniciar sesión</a>
 							{% endif %}
 						</ul>
 					</nav>
@@ -50,6 +51,12 @@
 				
 				{% block content %}
 				{% endblock content %}
+
+				<a href="https://wa.me/5491126400798?text=Hola%20quiero%20consultar%20por%20un%20aire"
+					class="whatsapp-float"
+					target="_blank">
+					<i class="fa-brands fa-whatsapp"></i>
+				</a>
 				
 				{% block cta %}
 				<!-- CTA -->

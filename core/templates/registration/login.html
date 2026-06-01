@@ -13,41 +13,31 @@
                         <div class="content">
                                 <header class="special container">
                                     <span class="icon solid fa-user"></span>
-                                            <h2>Iniciar sesión</h2>
-                                        </header>
+                                    <h2>Iniciar sesión</h2>
+                                </header>
                                         
-                                    <div id="error">
-                                        {% if messages %}
-                                        <ul>
-                                            {% for message in messages %}
-                                            <li style="color: red;">{{ message }}</li>
-                                            {% endfor %}
-                                        </ul>
-                                        {% endif %}
-                                    </div>
-
-                                    <form method="post" class="card" novalidate>
-
-                                        {% csrf_token %}
-
-                                        <div>
-                                            <table class="table">
-                                                {{ form.as_table }}
-                                            </table>
-                                        </div>
-                                        <div>
-                                            <button class="custom-buttons" type="submit">INGRESAR</button>
-                                        </div>
-
-                                        </div>
-                                    </form>
+                                <div id="error">
+                                    {% if messages %}
+                                    <ul>
+                                        {% for message in messages %}
+                                            <p style="color: red; font-size: 1.2em;">{{ message }}</p>
+                                        {% endfor %}
+                                            
+                                    </ul>
+                                    {% endif %}
                                 </div>
+
+                                <form method="post" class="card" novalidate>
+                                    {% csrf_token %}
+                                    <table class="table">
+                                        {{ form.as_table }}
+                                    </table>
+                                    <button class="custom-buttons" type="submit">INGRESAR</button>
+                                    <p style="margin-top: 30px;">¿No tienes cuenta? <a href="{% url 'signup' %}">Regístrate aquí</a></p>
+                                </form>
+                        </div>
                     </section>
                 </article>
-                            
-                       
-					
-			
 				{% endblock content %}
                 
                 {% block cta %}

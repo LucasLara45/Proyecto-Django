@@ -34,11 +34,11 @@ body{
     left:0;
     width:100%;
     z-index:9999;
-    background:#eceef2;
+    background:#fff;
 }
 
 #header.alt{
-    background:#eceef2;
+    background:#fff;
 }
 
 #logo a{
@@ -248,42 +248,38 @@ body{
 .solicitud-button,
 .custom-buttons,
 .button-container button{
-    display:inline-block;
+    display:inline-flex;
+    justify-content:center;
+    align-items:center;
+
+    min-width:160px;
+    max-width:220px;
 
     padding:12px 18px;
 
     background:#333;
-
-    color:white !important;
+    color:#fff !important;
 
     font-weight:bold;
 
+    border:none;
     border-radius:12px;
 
     text-decoration:none;
 
-    border:none;
-
     cursor:pointer;
-
-    transition:0.2s;
+    transition:.2s;
 }
 
 .solicitud-button:hover,
 .custom-buttons:hover,
 .button-container button:hover{
     background:#000;
-    color:white !important;
+    color:#fff !important;
 }
 
 .solicitud-button{
     margin-top:auto;
-    width:fit-content;
-}
-
-.custom-buttons{
-    width:200px;
-    text-align:center;
 }
 
 /* =========================
@@ -442,7 +438,7 @@ body{
     }
 
     .custom-buttons{
-        width:170px;
+        min-width:150px;
     }
 
 }
@@ -500,8 +496,9 @@ body{
     }
 
     .custom-buttons{
-        width:100%;
-        max-width:250px;
+        width:auto;
+        min-width:140px;
+        max-width:220px;
     }
 
     .card{
@@ -526,9 +523,6 @@ body{
 
 }
 
-.mobile-home{
-    display:none !important;
-}
 
 @media screen and (max-width:736px){
 
@@ -542,8 +536,6 @@ body{
    OVERRIDE FINAL BOTONES
 ========================= */
 
-/* TODOS los botones custom */
-
 a.custom-buttons,
 .custom-buttons,
 ul.buttons li a.custom-buttons,
@@ -554,7 +546,6 @@ ul.buttons li a.custom-buttons,
     border:none !important;
     box-shadow:none !important;
 }
-
 /* hover */
 
 a.custom-buttons:hover,
@@ -588,4 +579,48 @@ ul.buttons li .button.primary,
 
 .helptext{
     display: none;
+}
+
+
+.whatsapp-float{
+    position:fixed;
+    bottom:20px;
+    right:20px;
+
+    width:60px;
+    height:60px;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    border-radius:50%;
+
+    background:#25D366;
+    color:white;
+
+    font-size:2rem;
+    text-decoration:none;
+
+    z-index:9999;
+
+    box-shadow:0 4px 10px rgba(0,0,0,.3);
+
+    transition:.2s;
+}
+
+.whatsapp-float:hover{
+    transform:scale(1.08);
+}
+
+/* fix boton Back mobile */
+
+.mobile-home{
+    display:none !important;
+}
+
+@media screen and (max-width:736px){
+    .mobile-home{
+        display:block !important;
+    }
 }

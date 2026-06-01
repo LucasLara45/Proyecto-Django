@@ -8,3 +8,4 @@ media/
 .vscode/
 .idea/
 staticfiles/
+settings_dev.py
