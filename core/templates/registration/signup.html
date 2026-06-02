@@ -7,20 +7,25 @@ Crear cuenta - Refrigeración
 {% endblock title %}
 
     {% block content %}
-
-        <section class="wrapper style3 container special">
-
-            <header class="major">
-                <h2>Crear cuenta</h2>
+    <article id="main">
+        <section class="wrapper style4 special container medium">
+            <h2 style="text-align: center; margin-top: 20px; font-size: 2em;">Crear cuenta</h2>
+            <header class="special container">
+                <span class="icon solid fa-user"></span>
             </header>
-
-            <form method="POST">
+            <form method="POST" class="card" novalidate>
                 {% csrf_token %}
-
                 {% for field in form %}
                     <div class="form-group">
                         {{ field.label_tag }}
-                        {{ field }}
+                        {% if field.field.widget.input_type == 'password' %}
+                            <div class="password-wrapper">
+                                {{ field }}
+                                <button type="button" class="toggle-password"><i class="fa fa-eye"></i></button>
+                            </div>
+                        {% else %}
+                            {{ field }}
+                        {% endif %}
                         {% if field.errors %}
                             <div class="form-error">
                                 {{ field.errors }}
@@ -34,7 +39,9 @@ Crear cuenta - Refrigeración
             </form>
 
         </section>
+    </article>
 
     {% endblock %}
+
     {% block cta %}
     {% endblock cta %}

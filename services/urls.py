@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import ServiceDelete, ServiceList, ServiceCreate, ServiceOrderCreate, ServiceUpdate, ServiceDelete
+from .views import MyOrdersView, ServiceDelete, ServiceList, ServiceCreate, ServiceOrderCreate, ServiceUpdate, ServiceDelete
 
 urlpatterns = [
     path('', ServiceList.as_view(), name='service_list'),
@@ -8,4 +8,5 @@ urlpatterns = [
     path('edit/<int:pk>/', ServiceUpdate.as_view(), name='service_update'),
     path('delete/<int:pk>/', ServiceDelete.as_view(), name='service_delete'),
     path('order/<int:service_id>/', ServiceOrderCreate.as_view(), name='service_order_create'),
+    path("mis-pedidos/",MyOrdersView.as_view(),name="my_orders"),
 ]

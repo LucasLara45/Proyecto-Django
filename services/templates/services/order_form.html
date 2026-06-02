@@ -6,7 +6,13 @@
 
 {% block content %}
     <div style="text-align: center; margin-top: 20px; font-size: 1.5em;">
-        <h2>Solicitar servicio</h2>
+        <h2>
+            {% if service.category == "reacondicionado" %}
+                Solicitar Producto Reacondicionado
+            {% else %}
+                Solicitar Servicio
+            {% endif %}
+        </h2>
     </div>
     <div class="form-container">
         <form method="POST" class="service-form">

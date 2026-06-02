@@ -6,8 +6,8 @@ Servicios - Refrigeración
 
 {% block content %}
 
-    <h2 style="text-align: center; margin-top: 20px; font-size: 2em;">Nuestros Servicios</h2>
     <article id="main">
+        <h2 style="text-align: center; margin-top: 20px; font-size: 2em;">Nuestros Servicios</h2>
         {% if request.user.is_superuser %}
             <div class="create-button" style="text-align: center; margin-bottom: 20px;">
                 <a href="{% url 'service_create' %}" class="icon-button">➕</a>

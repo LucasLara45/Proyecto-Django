@@ -31,6 +31,7 @@
 									<li><a href="{% url 'service_list_category' 'heladera' %}">Heladeras</a></li>
 									<li><a href="{% url 'service_list_category' 'aire' %}">Aires acondicionados</a></li>
 									<li><a href="{% url 'service_list_category' 'reacondicionado' %}">Reacondicionados</a></li>
+									<li><a href="{% url 'my_orders' %}">Mis Pedidos</a></li>
 								</ul>
 							</li>
 							{% if request.user.is_authenticated %}
@@ -91,17 +92,7 @@
 					</footer>
 				
 				{% endblock footer %}
-			</div>
-			
-			{% comment %} <script> 
-				if (location.hash === "#reviews") {
-					setTimeout(() => {
-    					document.getElementById("reviews")?.scrollIntoView({ behavior: "smooth" });
-  					}, 				500);
-				}
-			</script> {% endcomment %}
-	
-			
+			</div>			
 			<!-- Scripts -->
 			<script src="{% static 'core/assets/js/jquery.min.js' %}"></script>
 			<script src="{% static 'core/assets/js/jquery.dropotron.min.js' %}"></script>
@@ -111,6 +102,7 @@
 			<script src="{% static 'core/assets/js/breakpoints.min.js' %}"></script>
 			<script src="{% static 'core/assets/js/util.js' %}"></script>
 			<script src="{% static 'core/assets/js/main.js' %}"></script>
+			<script src="{% static 'core/assets/js/password_toggle.js' %}"></script>
 
 	</body>
 </html>

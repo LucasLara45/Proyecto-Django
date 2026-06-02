@@ -1,0 +1,22 @@
+{% extends "core/base.html" %}
+
+{% block title %}
+Mis Pedidos - Refrigeración
+{% endblock title %}
+{% block content %}
+    <article id="main">
+
+        <h2 style="text-align: center; margin-top: 20px; font-size: 2em;">Mis Pedidos</h2>
+        <div class="reaconditioned-grid">
+            {% for order in object_list %}
+                <div class="card">
+                    <h3>{{ order.service.title }}</h3>
+                    <p>Estado: {{ order.get_status_display }}</p>
+                    <p>Fecha: {{ order.created_at }}</p>
+                </div>
+            {% empty %}
+                <p>No tienes pedidos realizados.</p>
+            {% endfor %}
+        </div>
+    </article>
+{% endblock content %}

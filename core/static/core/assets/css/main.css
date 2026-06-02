@@ -2545,6 +2545,7 @@ input, select, textarea {
 			opacity: 0;
 			padding: 3em;
 			text-align: center;
+			border-radius: 0.5em;
 		}
 
 			#banner .inner header {

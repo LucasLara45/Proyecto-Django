@@ -8,6 +8,8 @@ from services.forms import ServiceForm, ServiceOrderForm
 from django.shortcuts import get_object_or_404
 from django.shortcuts import redirect
 from urllib.parse import quote
+from django.contrib.auth.mixins import LoginRequiredMixin
+
 
 class ServiceList(ListView):
     model = Service
@@ -44,7 +46,7 @@ class ServiceDelete(DeleteView):
     model = Service
     success_url = reverse_lazy('service_list')
     
-class ServiceOrderCreate(CreateView):
+class ServiceOrderCreate(LoginRequiredMixin, CreateView):
     model = ServiceOrder
     form_class = ServiceOrderForm
     template_name = 'services/order_form.html'
@@ -75,3 +77,12 @@ class ServiceOrderCreate(CreateView):
         context = super().get_context_data(**kwargs)
         context['service'] = get_object_or_404(Service,id=self.kwargs['service_id'])
         return context
+
+class MyOrdersView(LoginRequiredMixin, ListView):
+    model = ServiceOrder
+    template_name = "services/my_orders.html"
+
+    def get_queryset(self):
+        return ServiceOrder.objects.filter(
+            user=self.request.user
+        ).order_by("-created_at")
