@@ -16,7 +16,7 @@ class Review(models.Model):
         choices=RATING,
         verbose_name="Calificación"
     )
-    comment = models.TextField(blank=True)
+    comment = models.TextField(blank=True, verbose_name="Comentario")
     created_at = models.DateTimeField(auto_now_add=True)
 
     class Meta:

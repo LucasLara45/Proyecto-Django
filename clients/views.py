@@ -5,7 +5,7 @@ from django.urls import reverse_lazy
 from django.views.generic import CreateView, DeleteView
 from django.db import IntegrityError
 from .models import Review
-from .forms import ReviewForm, ContactForm
+from .forms import ReviewForm, ContactForm, SignUpForm
 from django.contrib.auth.views import LoginView
 from django.contrib.auth.mixins import UserPassesTestMixin
 from django.core.mail import send_mail
@@ -56,7 +56,7 @@ def contact(request):
     return render(request , 'core/contact.html', {'form': form})
 
 class SignUpView(CreateView):
-    form_class = UserCreationForm
+    form_class = SignUpForm
     template_name = 'registration/signup.html'
     success_url = reverse_lazy('login')
 

@@ -9,11 +9,11 @@ class Service(models.Model):
         ('reacondicionado', 'Reacondicionado'),
     ]
 
-    category = models.CharField(max_length=20, choices=CATEGORY_CHOICES)
-    title = models.CharField(max_length=100)
-    description = models.TextField()
-    price = models.DecimalField(max_digits=10, decimal_places=2)
-    image = models.ImageField(upload_to='services/')
+    category = models.CharField(max_length=20, choices=CATEGORY_CHOICES, verbose_name="Categoría")
+    title = models.CharField(max_length=100, verbose_name="Título")
+    description = models.TextField(verbose_name="Descripción")
+    price = models.DecimalField(max_digits=10, decimal_places=2, verbose_name="Precio")
+    image = models.ImageField(upload_to='services/', verbose_name="Imagen")
 
 class ServiceOrder(models.Model):
     STATUS = [

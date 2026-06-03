@@ -1,5 +1,7 @@
 from django import forms
 from .models import Review
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.models import User
 
 class ContactForm(forms.Form):
     name = forms.CharField(max_length=100, label="Nombre")
@@ -18,3 +20,9 @@ class ReviewForm(forms.ModelForm):
             })
         }
 
+class SignUpForm(UserCreationForm):
+    first_name = forms.CharField(max_length=30, label="Nombre Real Completo")
+
+    class Meta:
+        model = User
+        fields = ('first_name', 'username', 'password1', 'password2')
